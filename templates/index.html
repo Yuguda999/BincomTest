@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Polling Unit Id</th>
+            <th scope="col">Polling Unit Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for polling_unit in all_polling_units %}
+          <tr>
+            <td><a href="/polling_unit_result/{{polling_unit.uniqueid }}/" class="list-group-item list-group-item-action">{{polling_unit.uniqueid }}</a></td>
+            <td><a href="/polling_unit_result/{{polling_unit.uniqueid }}/" class="link">{{polling_unit.polling_unit_name}}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
