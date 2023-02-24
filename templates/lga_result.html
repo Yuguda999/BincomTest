@@ -2,8 +2,9 @@
 
 {% block content %}
     <div class="large-box">
-      <h3>Total votes for {{lga}} LGA</h3>
+      <h5>Total votes for {{lga}} LGA</h5>
         <h1>{{total_votes}}</h1>
+        <p>Annouced Votes: {{announced_votes}}</p>
                 <a href="{{request.META.HTTP_REFERER}}" class="btn btn-md btn-outline-dark">Back</a>
     </div>
 

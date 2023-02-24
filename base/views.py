@@ -32,6 +32,7 @@ def lga(request):
 def lga_result_details(request, lga_name, lga_id):
     results = {}
     total_votes = 0
+    announced_votes = 0
     try:
         uniqueid = PollingUnit.objects.filter(lga_id=lga_id).first().polling_unit_id
     except AttributeError:
@@ -41,10 +42,14 @@ def lga_result_details(request, lga_name, lga_id):
 
     for result in results:
         total_votes += result.party_score
-    print(total_votes)
+    anounced_lga_result = AnnouncedLgaResults.objects.filter(lga_name=lga_id)
+    for anounced_result in anounced_lga_result:
+        announced_votes+=anounced_result.party_score
+    print(anounced_lga_result)
     context = {
         'lga': lga_name,
         'total_votes': total_votes,
+        'announced_votes': announced_votes
     }
     return render(request, 'lga_result.html', context)
 
